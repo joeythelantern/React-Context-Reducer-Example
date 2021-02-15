@@ -1,22 +1,17 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { CartContextProvider } from './contexts/cart';
-import IItem from './interfaces/item';
+import { CartContextProvider, cartReducer, inistialCartState } from './contexts/cart';
 import CartPage from './pages/cart';
 import ShopPage from './pages/shop';
 
 export interface IApplicationProps {}
 
 const Application: React.FunctionComponent<IApplicationProps> = props => {
-    const [items, setItems] = useState<{ [key: string]: IItem[] }>({});
-
-    const updateItems = (_items: { [key: string]: IItem[] }) => {
-        setItems(_items);
-    }
+    const [cartState, cartDispatch] = useReducer(cartReducer, inistialCartState);
 
     const cartContextValues = {
-        items,
-        updateItems
+        cartState,
+        cartDispatch
     }
 
     return (

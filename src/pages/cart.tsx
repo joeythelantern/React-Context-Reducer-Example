@@ -13,10 +13,10 @@ const CartPage: React.FunctionComponent<ICartPageProps> = props => {
         <>
             <Navigation />
             <Container className="p-1">
-                {Object.keys(cartContext.items).length > 0 ?
+                {Object.keys(cartContext.cartState.items).length > 0 ?
                     <Row>
-                        {Object.keys(cartContext.items).map((value, index) => {
-                            let _items = cartContext.items[value];
+                        {Object.keys(cartContext.cartState.items).map((value, index) => {
+                            let _items = cartContext.cartState.items[value];
 
                             if (_items.length > 0)
                             {

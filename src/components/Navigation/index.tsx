@@ -12,8 +12,8 @@ const Navigation: React.FunctionComponent = props => {
     useEffect(() => {
         let _count = 0;
 
-        for (let key in cartContext.items)
-            _count += cartContext.items[key].length;
+        for (let key in cartContext.cartState.items)
+            _count += cartContext.cartState.items[key].length;
 
         setCount(_count);
     }, [cartContext]);

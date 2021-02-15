@@ -28,20 +28,7 @@ const ShopItemComponent: React.FunctionComponent<IShopItemComponentProps> = (pro
                             <Button
                                 size="sm"
                                 color="primary"
-                                onClick={() => {
-                                    let _items = {...cartContext.items};
-                                    
-                                    if (_items[item.name])
-                                    {
-                                        _items[item.name].push(item)
-                                    }
-                                    else
-                                    {
-                                        _items[item.name] = [item];
-                                    }
-
-                                    cartContext.updateItems(_items);
-                                }}
+                                onClick={() => cartContext.cartDispatch({ type: 'add_item', payload: item })}
                             >
                                 Add to Cart
                                 <i className="fa fa-plus ml-1" aria-hidden="true"></i>

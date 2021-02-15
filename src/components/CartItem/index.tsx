@@ -25,18 +25,7 @@ const CartItemComponent: React.FunctionComponent<ICartItemComponentProps> = (pro
                         <Button
                             size="sm"
                             color="primary"
-                            onClick={() => {
-                                let _items = {...cartContext.items};
-                                
-                                _items[item.name].pop();
-                                
-                                if (_items[item.name].length === 0)
-                                {
-                                    delete _items[item.name];
-                                }
-
-                                cartContext.updateItems(_items);
-                            }}
+                            onClick={() => cartContext.cartDispatch({ type: 'remove_item', payload: item })}
                         >
                             Remove one from cart
                             <i className="fa fa-minus ml-1" aria-hidden="true"></i>
