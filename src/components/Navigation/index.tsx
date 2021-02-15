@@ -15,6 +15,8 @@ const Navigation: React.FunctionComponent = props => {
         for (let key in cartContext.cartState.items)
             _count += cartContext.cartState.items[key].length;
 
+        if (_count !== count) return;
+        
         setCount(_count);
     }, [cartContext]);
 
